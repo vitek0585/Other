@@ -1,0 +1,44 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ControlTemplate x:Key="MyProgressBar" TargetType="{x:Type ProgressBar}">
+        <Grid MinHeight="14" MinWidth="20">
+            <Border x:Name="BaseRectangle" Background="Red"/>
+            <Border x:Name="GlassRectangle" 
+                Background="SteelBlue">
+            </Border>
+            <Border x:Name="animation"  
+                Opacity=".7" Background="Yellow" 
+                HorizontalAlignment="Left">
+            </Border>
+            <Border x:Name="PART_Indicator" Margin="2" Opacity=".7" CornerRadius="0,5,5,0" 
+                Background="Red" 
+                HorizontalAlignment="Left">
+            </Border>
+            <Border x:Name="PART_Track" BorderThickness="1" 
+                BorderBrush="Transparent">
+            </Border>
+           
+            <Label x:Name="Progress" VerticalAlignment="Stretch" 
+               HorizontalAlignment="Stretch" 
+               HorizontalContentAlignment="Center" 
+               VerticalContentAlignment="Center" 
+               FontWeight="Bold" Foreground="White" Opacity=".9" ContentStringFormat="{}{0:F0}"
+               Content="{Binding Path=Value, RelativeSource={RelativeSource TemplatedParent}}">
+            </Label>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <EventTrigger RoutedEvent="RangeBase.ValueChanged">
+                <EventTrigger.Actions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="Value"
+                                             Duration="0:0:0.1">
+                            </DoubleAnimation>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger.Actions>
+            </EventTrigger>
+            
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+</ResourceDictionary>

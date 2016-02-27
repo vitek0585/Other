@@ -1,0 +1,27 @@
+$("#date-birthday").datepicker({
+            pickTime: false,
+            autoclose: true,
+            format: "dd.mm.yyyy",
+            //language: "ru-RU"
+        });
+
+        jQuery.validator.addMethod(
+            'date',
+            function (value, element, params) {
+                if (this.optional(element)) {
+                    return true;
+                };
+                var result = false;
+                try {
+                    var arr = value.split('.');
+                    var date = arr[1] + "/" + arr[0] + "/" + arr[2];
+                    var t = new Date(date);
+                    if (t == "Invalid Date")
+                        throw new DOMException();
+                    console.log(element.value + " - " + t);
+                    result = true;
+                } catch (err) {
+                    result = false;
+                }
+                return result;
+            },'Error');

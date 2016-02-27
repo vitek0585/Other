@@ -1,0 +1,22 @@
+this.formRequest = function (url, item, headers) {
+        var form = new FormData();
+        for (var k in item) {
+            if (Array.isArray(item[k])) {
+                for (var i = 0; i < item[k].length; i++) {
+                    form.append(k + i, item[k][i]);
+                }
+
+            } else
+                form.append(k, item[k]);
+        }
+
+        var config = {
+            url: url,
+            method: "POST",
+            data: form,
+            transformRequest: angular.identity,
+            headers: headers || { 'Content-type': undefined }
+        };
+        var promise = http(config);
+        return promise;
+    }

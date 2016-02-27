@@ -1,0 +1,15 @@
+C:\Users\Виктор\Desktop\c#\Biblija_C_CD_Bookforall.ru\Уроки\WPF\Фишки\9780672331190_SourceCode\07\Navigat\bin\Debug\Navigat.exe.config
+C:\Users\Виктор\Desktop\c#\Biblija_C_CD_Bookforall.ru\Уроки\WPF\Фишки\9780672331190_SourceCode\07\Navigat\obj\Debug\Navigat.csprojResolveAssemblyReference.cache
+C:\Users\Виктор\Desktop\c#\Biblija_C_CD_Bookforall.ru\Уроки\WPF\Фишки\9780672331190_SourceCode\07\Navigat\obj\Debug\MainWindow.baml
+C:\Users\Виктор\Desktop\c#\Biblija_C_CD_Bookforall.ru\Уроки\WPF\Фишки\9780672331190_SourceCode\07\Navigat\obj\Debug\MainWindow.g.cs
+C:\Users\Виктор\Desktop\c#\Biblija_C_CD_Bookforall.ru\Уроки\WPF\Фишки\9780672331190_SourceCode\07\Navigat\obj\Debug\App.g.cs
+C:\Users\Виктор\Desktop\c#\Biblija_C_CD_Bookforall.ru\Уроки\WPF\Фишки\9780672331190_SourceCode\07\Navigat\obj\Debug\Navigat_MarkupCompile.cache
+C:\Users\Виктор\Desktop\c#\Biblija_C_CD_Bookforall.ru\Уроки\WPF\Фишки\9780672331190_SourceCode\07\Navigat\obj\Debug\Navigat.g.resources
+C:\Users\Виктор\Desktop\c#\Biblija_C_CD_Bookforall.ru\Уроки\WPF\Фишки\9780672331190_SourceCode\07\Navigat\obj\Debug\Navigat.Properties.Resources.resources
+C:\Users\Виктор\Desktop\c#\Biblija_C_CD_Bookforall.ru\Уроки\WPF\Фишки\9780672331190_SourceCode\07\Navigat\obj\Debug\Navigat.csproj.GenerateResource.Cache
+C:\Users\Виктор\Desktop\c#\Biblija_C_CD_Bookforall.ru\Уроки\WPF\Фишки\9780672331190_SourceCode\07\Navigat\bin\Debug\Navigat.exe
+C:\Users\Виктор\Desktop\c#\Biblija_C_CD_Bookforall.ru\Уроки\WPF\Фишки\9780672331190_SourceCode\07\Navigat\bin\Debug\Navigat.pdb
+C:\Users\Виктор\Desktop\c#\Biblija_C_CD_Bookforall.ru\Уроки\WPF\Фишки\9780672331190_SourceCode\07\Navigat\obj\Debug\Navigat.exe
+C:\Users\Виктор\Desktop\c#\Biblija_C_CD_Bookforall.ru\Уроки\WPF\Фишки\9780672331190_SourceCode\07\Navigat\obj\Debug\Navigat.pdb
+C:\Users\Виктор\Desktop\c#\Biblija_C_CD_Bookforall.ru\Уроки\WPF\Фишки\9780672331190_SourceCode\07\Navigat\obj\Debug\Page1.baml
+C:\Users\Виктор\Desktop\c#\Biblija_C_CD_Bookforall.ru\Уроки\WPF\Фишки\9780672331190_SourceCode\07\Navigat\obj\Debug\Page1.g.cs

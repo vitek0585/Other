@@ -1,0 +1,253 @@
+
+1. Домашнее  задание – БД из 5 таблиц –
+
+Employee id, fio [ lname , oname], salary, address, bd, idDep, budget
+
+Department  id, name, address, dirname (director), expenditure, budget
+
+Vocations - id, name, wage, idDep, budget
+
+Products -  id, name, cost, yearlog
+
+ProductsDone id, idProd, date, quant, idEmp
+
+2. Домашнее задание –
+
+1.	Запрос на выборку всех работников
+SELECT lastname
+from employee e 
+
+2.	Запрос на выборку работников с фамилиями начинающимися на «a»
+SELECT lastname
+from employee e 
+where e.lastname like ('k*')
+
+3.	Запрос на выборку работников старше 30
+SELECT lastname,birthday
+from employee e 
+where e.birthday<DateAdd("yyyy",-30,Date())
+ActorBirthday > DateAdd("yyyy",-20,SYSDATETIME())
+
+4.	Запрос на выборку вакансий со  ставкой больше 1000
+SELECT name_,wage
+from vocations v
+where v.wage>1000
+
+5.	Запрос на выборку Продукции за последние 7 дней
+SELECT p.name_,pd.date_
+from products p,productsdone pd
+where p.id=pd.idProd and DateDiff("d",pd.date_,#03,10,1946#) between 0 and 7
+
+6.	Запрос на выборку фамилий директоров департаментов
+SELECT distinct dirname,name_
+from department
+
+7.	Запрос на выборку работников с зарплатой больше средней
+SELECT lastname,salary
+from employee
+where salary>(select avg(salary)
+from employee)
+
+8.	Запрос на выборку количества Продукта оставшегося к выпуску до конца года.
+select p.name_,year(pd.date_),p.yearlog-sum(quant)
+from products p,productsdone pd
+where p.id=pd.idProd 
+group by p.name_,year(pd.date_),p.yearlog
+having p.yearlog-sum(quant)>0
+
+9.	Запрос на выборку не использованных средств по департаментам
+select d.name_,d.expenditure-v1.vBudg-e1.eBudg
+from department d,
+(select v.idDep, sum(v.budget) as vBudg
+from vocations v
+group by v.idDep) as v1,
+(select e.idDep, sum(budget) as eBudg
+from employee e
+group by e.idDep) as e1
+where d.id=v1.v.idDep and d.id=e1.e.idDep
+union 
+select d.name_,d.expenditure
+from department d
+where d.id <> all (select v.idDep
+from vocations v)
+
+10.	Запрос на выборку работников с фамилиями от ‘b’ от ‘k’
+SELECT lastname
+from employee
+where lastname between 'b*' and 'k*'
+order by lastname
+
+3. Домашнее задание –
+
+1.	Запрос на выборку работников с зарплатой больше средней не используя avg
+SELECT lastname,salary
+from employee
+where salary>(select sum(salary)/count(*)
+from employee)
+
+2.	Запрос на выборку суммарной стоимости по базе productsdone
+SELECT p.name_,sum(quant*cost) as summ
+from productsDone pd,products p
+where pd.idProd = p.id
+group by p.name_
+
+3.	Запрос на выборку наименования продукции и среднего количества выпуска
+select p.name_,round(avg(quant))
+from productsDone pd,products p
+where p.id=pd.idProd
+group by p.name_
+
+4.	Запрос на выборку наименования продукции и минимального количества выпуска при условии ,что выпуск >5
+select p.name_,min(quant)
+from productsDone pd,products p
+where p.id=pd.idProd
+group by p.name_
+having min(pd.quant)>5 
+
+5.	Запрос на выборку наименования продукции и среднего количества выпуска при условии ,что выпуск >65
+select p.name_,round(avg(quant),2),count(*)
+from productsDone pd,products p
+where p.id=pd.idProd
+group by p.name_
+having sum(quant)>65
+
+6.	Запрос на выборку фамилий и названий департаментов работы
+select e.lastname,d.name_
+from employee e,department d
+where e.idDep=d.id
+
+7.	Запрос на выборку наименования продукта, изготовленного количества, даты изготовления, фамилии изготовившего
+select p.name_,pd.quant,pd.date_,e.lastname
+from products p,productsDone pd,employee e
+where p.id=pd.idProd and pd.idEmp=e.id
+
+8.	Запрос на выборку департаментов и их вакансий
+select distinct d.name_,v.name_
+from vocations v,department d
+where v.idDep=d.id
+
+9.	Запрос на выборку департаментов и сумм их вакансий
+select d.name_,sum(v.wage)
+from vocations v,department d
+where v.idDep=d.id
+group by d.name_
+
+10.	Запрос на выборку 
+
+4. Домашнее задание –
+
+1.	Запрос на выборку группировку работников по департаментам, вакансий по департаментам - отсортировать по фамилии департаментам
+select "Persons",e.lastname,d.name_,d.dirname
+from employee e,department d
+where e.idDep=d.id
+order by d.dirname 
+union
+select "Vocations",v.name_,d.name_,d.dirname
+from vocations v,department d
+where v.idDep=d.id
+order by d.dirname
+
+2.	Запрос на выборку работника со стоимостью произведенной им продукции для работников со стоимостью произведенного >400
+select e.lastname,sum(t1.summ)
+from employee e,
+(SELECT p.name_,sum(quant*cost) as summ,pd.idEmp
+from productsDone pd,products p
+where pd.idProd = p.id
+group by p.name_,pd.idEmp) as t1
+where e.id=t1.pd.idEmp
+group by e.lastname
+having sum(t1.summ)>300
+
+3.	Запрос на выборку наименования продукта и его средней партии производства для того продукта
+select p.name_,round(sum(pd.quant)/count(p.name_),2)
+from productsDone pd,products p
+where p.id=pd.idProd
+group by p.name_
+
+4.	Запрос на выборку из таблицы productsdone строк соответствующих первому наименованию продукта в таблице products 
+select *
+from productsDone pd,
+(select top 1 p.id
+from products p) as p1
+where p1.p.id=pd.idProd
+
+5.	Запрос на выборку произведенного (наименование , количество) за сентябрь
+select p.name_,sum(quant)
+from productsDone pd,products p
+where pd.idProd = p.id and month(pd.date_)=9
+group by p.name_
+
+6.	Запрос на выборку - проверить все ли работники отнесены к какому -то департаменту, все ли вакансиии отнесены к какому -то департаменту, все ли записи  из PRODUCTSDONE соотнесены с работником и описанием в PRODUCTS (ANY)
+select "департамент-сотрудник","не отнесены сотрудников - "&count(*)-(select count(*) as al
+from employee em,department d
+where em.idDep=d.id) 
+from employee 
+union
+select "вакансии-департамент","не отнесены вакансий - "&count(*)-(select count(*) as al
+from vocations v,department d
+where v.idDep=d.id) 
+from department 
+union
+select "PRODUCTSDONE-работником и PRODUCTS","не отнесены PRODUCTSDONE - "&count(*)-(select count(*) as al
+from products p,productsdone pd,employee e
+where pd.idProd=p.id and pd.idEmp=e.id) 
+from productsdone 
+
+7.	Запрос на выборку - Остатков средств по департаментам ( expenditure - budget работников - budget вакансий)	
+select d.name_,d.expenditure-v1.vBudg-e1.eBudg
+from department d,
+(select v.idDep, sum(v.budget) as vBudg
+from vocations v
+group by v.idDep) as v1,
+(select e.idDep, sum(budget) as eBudg
+from employee e
+group by e.idDep) as e1
+where d.id=v1.v.idDep and d.id=e1.e.idDep
+union 
+select d.name_,d.expenditure
+from department d
+where d.id <> all (select v.idDep
+from vocations v)
+
+8.	Запрос на выборку работников с минимальной запплатой, 2 - продукта с минимальной ценой, максимаоьной ценой
+select e.lastname,e.salary
+from Employee e
+where e.salary=(select min(e1.salary) 
+from employee e1)
+----------------
+select p.name_,p.cost
+from Products p
+where p.cost=(select min(p1.cost) 
+from Products p1)
+-----------------
+select p.name_,p.cost
+from Products p
+where p.cost=(select max(p1.cost) 
+from Products p1)
+
+9.	Запрос на выборку - произведенный продукт (из PRODUCTS), количество , кто сделал - отсортировать по фамилии изготовившего
+select t1.p1.name_,t1.e.lastname,t1.summ
+from 
+(select p1.name_,e.lastname,sum(pd1.quant) as summ
+from ProductsDone pd1,Products p1,Employee e
+where pd1.idProd=p1.id and p1.name_ like "uran" and e.id=pd1.idEmp
+group by  p1.name_,e.lastname
+order by e.lastname
+union all
+select "Summa"," ",sum(pd.quant)
+from ProductsDone pd,Products p
+where pd.idProd=p.id and p.name_ like "uran") as t1
+
+
+10.	Создать индекс для firstname для employee, создать индекс для address для employee. Удалить индексы address, firstname
+
+5-7. Домашнее задание –
+
+1.	Запрос на выборку группировку работников исключив самого высокооплачиваемого, 1а - самого низкооплачиваемого
+SELECT LASTNAME,SALARY
+from Employee e
+where e.SALARY>(select min(SALARY)
+from Employee e) and e.SALARY<(select max(SALARY)
+from Employee e)
+order by SALARY
+2.	Создать свою многотабличную базу данных, установить связи между таблицами, написать запросы.

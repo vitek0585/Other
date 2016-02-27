@@ -1,0 +1,120 @@
+﻿ <Window x:Class="BitmapEffects.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="BitmapEffects" Height="350" Width="525">
+    <ScrollViewer>
+        <StackPanel Margin="3">
+            
+            <StackPanel.Resources>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Padding" Value="5"></Setter>
+                    <Setter Property="Margin" Value="3"></Setter>
+                </Style>
+            </StackPanel.Resources>
+
+            <!--BlurBitmapEffect-->
+            <Button>Обычная кнопка</Button> 
+            <Button>
+                <Button.Content>Обычная кнопка с размытием</Button.Content>
+                <Button.BitmapEffect>
+                    <BlurBitmapEffect Radius="1"></BlurBitmapEffect>
+                </Button.BitmapEffect>
+            </Button>
+            <Button>
+                <Button.Content>Обычная кнопка и сильное размытие</Button.Content>
+                <Button.BitmapEffect>
+                    <BlurBitmapEffect Radius="5"></BlurBitmapEffect>
+                </Button.BitmapEffect>
+            </Button>
+            
+            <!--BevelBitmapEffect-->
+            <Button>
+                <Button.Content>Beveled эффект</Button.Content>
+                <Button.BitmapEffect>
+                    <BevelBitmapEffect></BevelBitmapEffect>
+                </Button.BitmapEffect>
+            </Button>
+            
+            <TextBlock FontSize="80" FontWeight="Bold" Foreground="Gray">
+                
+            <TextBlock.Text>Beveled текст</TextBlock.Text>
+                <TextBlock.BitmapEffect>
+                    <BevelBitmapEffect></BevelBitmapEffect>
+                </TextBlock.BitmapEffect>
+            </TextBlock>
+
+            <!--EmbossBitmapEffect-->
+            <TextBlock FontSize="40" FontWeight="Bold" Foreground="Gray">
+                <TextBlock.Text>Embossed эффект</TextBlock.Text>
+                    <TextBlock.BitmapEffect>
+                        <EmbossBitmapEffect></EmbossBitmapEffect>
+                    </TextBlock.BitmapEffect>
+            </TextBlock>
+            
+            <WrapPanel>
+                <Image Margin="3" Source="cube.jpg" Width="150"></Image>
+                
+                <Image Margin="3" Source="cube.jpg" Width="150">
+                    <Image.BitmapEffect>
+                        <EmbossBitmapEffect Relief="0.9"></EmbossBitmapEffect>
+                    </Image.BitmapEffect>
+                </Image>
+                
+                <Image Margin="3" Source="cube.jpg" Width="150">
+                    <Image.BitmapEffect>
+                        <EmbossBitmapEffect Relief="0.5"></EmbossBitmapEffect>
+                    </Image.BitmapEffect>
+                </Image>
+            </WrapPanel>
+
+            <!--DropShadowBitmapEffect-->
+            <Button>
+                <Button.Content>Кнопка с тенью</Button.Content>
+                <Button.BitmapEffect>
+                    <DropShadowBitmapEffect></DropShadowBitmapEffect>
+                </Button.BitmapEffect>
+            </Button>
+            
+            <TextBlock Margin="3" FontSize="40" FontWeight="Bold" Foreground="White">
+                <TextBlock.Text>Текст с тенью</TextBlock.Text>
+                <TextBlock.BitmapEffect>
+                    <DropShadowBitmapEffect></DropShadowBitmapEffect>
+                </TextBlock.BitmapEffect>
+            </TextBlock>
+
+            <TextBlock Margin="3,0,3,13" FontSize="40" FontWeight="Bold">
+                <TextBlock.Text>Тень с отступом</TextBlock.Text>
+                <TextBlock.BitmapEffect>
+                    <DropShadowBitmapEffect ShadowDepth="20" Color="LightSteelBlue" Softness="0"></DropShadowBitmapEffect>
+                </TextBlock.BitmapEffect>
+            </TextBlock>
+
+            <!--OuterGlowBitmapEffect-->
+            <Button>
+                <Button.Content>Эффект свечения</Button.Content>
+                <Button.BitmapEffect>
+                    <OuterGlowBitmapEffect GlowColor="LimeGreen"></OuterGlowBitmapEffect>
+                </Button.BitmapEffect>
+            </Button>
+            <Button Margin="3,20,3,10">
+                <Button.Content>Эффект свечения</Button.Content>
+                <Button.BitmapEffect>
+                    <OuterGlowBitmapEffect GlowColor="LimeGreen" GlowSize="15" Noise="0.5"></OuterGlowBitmapEffect>
+                </Button.BitmapEffect>
+            </Button>
+            <TextBlock FontSize="40" FontWeight="Bold" Margin="3">
+                <TextBlock.Text>Эффект свечения</TextBlock.Text>
+                <TextBlock.BitmapEffect>
+                    <OuterGlowBitmapEffect GlowColor="LimeGreen"></OuterGlowBitmapEffect>
+                </TextBlock.BitmapEffect>
+            </TextBlock>
+
+            <TextBlock Margin="3" FontSize="40" FontWeight="Bold" Foreground="Blue">
+                <TextBlock.Text>Эффект свечения</TextBlock.Text>
+                    <TextBlock.BitmapEffect>
+                        <OuterGlowBitmapEffect GlowColor="LimeGreen" GlowSize="20" Noise="0.5"></OuterGlowBitmapEffect>
+                    </TextBlock.BitmapEffect>
+            </TextBlock>
+        </StackPanel>
+    </ScrollViewer>
+</Window>

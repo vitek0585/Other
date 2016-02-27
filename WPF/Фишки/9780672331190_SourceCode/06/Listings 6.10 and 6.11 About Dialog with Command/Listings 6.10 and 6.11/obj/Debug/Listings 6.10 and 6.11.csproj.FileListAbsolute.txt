@@ -1,0 +1,13 @@
+C:\Users\Виктор\Desktop\c#\Biblija_C_CD_Bookforall.ru\Уроки\WPF\Фишки\9780672331190_SourceCode\06\Listings 6.10 and 6.11 About Dialog with Command\Listings 6.10 and 6.11\bin\Debug\Listings 6.10 and 6.11.exe.config
+C:\Users\Виктор\Desktop\c#\Biblija_C_CD_Bookforall.ru\Уроки\WPF\Фишки\9780672331190_SourceCode\06\Listings 6.10 and 6.11 About Dialog with Command\Listings 6.10 and 6.11\bin\Debug\Listings 6.10 and 6.11.exe
+C:\Users\Виктор\Desktop\c#\Biblija_C_CD_Bookforall.ru\Уроки\WPF\Фишки\9780672331190_SourceCode\06\Listings 6.10 and 6.11 About Dialog with Command\Listings 6.10 and 6.11\bin\Debug\Listings 6.10 and 6.11.pdb
+C:\Users\Виктор\Desktop\c#\Biblija_C_CD_Bookforall.ru\Уроки\WPF\Фишки\9780672331190_SourceCode\06\Listings 6.10 and 6.11 About Dialog with Command\Listings 6.10 and 6.11\obj\Debug\Listings 6.10 and 6.11.csprojResolveAssemblyReference.cache
+C:\Users\Виктор\Desktop\c#\Biblija_C_CD_Bookforall.ru\Уроки\WPF\Фишки\9780672331190_SourceCode\06\Listings 6.10 and 6.11 About Dialog with Command\Listings 6.10 and 6.11\obj\Debug\Window1.baml
+C:\Users\Виктор\Desktop\c#\Biblija_C_CD_Bookforall.ru\Уроки\WPF\Фишки\9780672331190_SourceCode\06\Listings 6.10 and 6.11 About Dialog with Command\Listings 6.10 and 6.11\obj\Debug\Window1.g.cs
+C:\Users\Виктор\Desktop\c#\Biblija_C_CD_Bookforall.ru\Уроки\WPF\Фишки\9780672331190_SourceCode\06\Listings 6.10 and 6.11 About Dialog with Command\Listings 6.10 and 6.11\obj\Debug\App.g.cs
+C:\Users\Виктор\Desktop\c#\Biblija_C_CD_Bookforall.ru\Уроки\WPF\Фишки\9780672331190_SourceCode\06\Listings 6.10 and 6.11 About Dialog with Command\Listings 6.10 and 6.11\obj\Debug\Listings 6.10 and 6.11_MarkupCompile.cache
+C:\Users\Виктор\Desktop\c#\Biblija_C_CD_Bookforall.ru\Уроки\WPF\Фишки\9780672331190_SourceCode\06\Listings 6.10 and 6.11 About Dialog with Command\Listings 6.10 and 6.11\obj\Debug\Listings 6.10 and 6.11.g.resources
+C:\Users\Виктор\Desktop\c#\Biblija_C_CD_Bookforall.ru\Уроки\WPF\Фишки\9780672331190_SourceCode\06\Listings 6.10 and 6.11 About Dialog with Command\Listings 6.10 and 6.11\obj\Debug\Chapter6.Properties.Resources.resources
+C:\Users\Виктор\Desktop\c#\Biblija_C_CD_Bookforall.ru\Уроки\WPF\Фишки\9780672331190_SourceCode\06\Listings 6.10 and 6.11 About Dialog with Command\Listings 6.10 and 6.11\obj\Debug\Listings 6.10 and 6.11.csproj.GenerateResource.Cache
+C:\Users\Виктор\Desktop\c#\Biblija_C_CD_Bookforall.ru\Уроки\WPF\Фишки\9780672331190_SourceCode\06\Listings 6.10 and 6.11 About Dialog with Command\Listings 6.10 and 6.11\obj\Debug\Listings 6.10 and 6.11.exe
+C:\Users\Виктор\Desktop\c#\Biblija_C_CD_Bookforall.ru\Уроки\WPF\Фишки\9780672331190_SourceCode\06\Listings 6.10 and 6.11 About Dialog with Command\Listings 6.10 and 6.11\obj\Debug\Listings 6.10 and 6.11.pdb

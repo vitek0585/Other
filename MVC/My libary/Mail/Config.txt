@@ -1,0 +1,13 @@
+ <appSettings>
+    <add key="SMTPServer" value="smtp.mail.ru" />
+    <add key="SMTPRequiresAuthentication" value="false" />
+    <add key="SMTPUseSsl" value="true" />
+    <add key="SMTPPort" value="587" />
+    <add key="SMTPUser" value="vitya0585@mail.ua" />
+    <add key="SMTPPassword" value="cr799444" />
+    <add key="SMTPTimeoutInMilliseconds" value="30000" />
+    <!-- Leave this blank for ASCII encoding. Allowed values are utf-8, utf-32, and unicode -->
+    <add key="SmtpPreferredEncoding" value="" />
+    <add key="IsKerioMailServer" value="true" />
+
+  </appSettings>

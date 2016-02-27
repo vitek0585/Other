@@ -1,0 +1,4 @@
+Add-Migration InitialMigrations -IgnoreChanges
+Update-Database
+Add-Migration CreatePhotoTable
+Update-Database -Verbose

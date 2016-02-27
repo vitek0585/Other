@@ -1,0 +1,38 @@
+PM Update-Package MiniProfiler -Version 3.0.11
+
+protected void Application_Start()
+        {
+           
+            AreaRegistration.RegisterAllAreas();
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+        }
+        protected void Application_BeginRequest()
+        {
+            if (Request.IsLocal)
+                MiniProfiler.Start();
+        }
+
+        protected void Application_EndRequest()
+        {
+            MiniProfiler.Stop();
+        }
+_____________________________________________________
+если dependency mvc 5 
+/// <summary>
+        /// Load your modules or register your services here!
+        /// </summary>
+        /// <param name="kernel">The kernel.</param>
+        private static void RegisterServices(IKernel kernel)
+        {
+            MiniProfilerEF6.Initialize();
+
+            DependencyResolver.SetResolver(new NinjectDependencyResolver(kernel));
+        }   
+___________________________________________________
+web.config
+ <system.webServer>
+    <modules runAllManagedModulesForAllRequests="true">
+      
+    </modules>
+  </system.webServer>

@@ -1,0 +1,14 @@
+C:\Users\Виктор\Desktop\c#\Biblija_C_CD_Bookforall.ru\Уроки\WPF\Фишки\9780672331190_SourceCode\10\Listing 10.2 DataGrid with Inline Data\DataGrid\bin\Debug\DataGrid.exe
+C:\Users\Виктор\Desktop\c#\Biblija_C_CD_Bookforall.ru\Уроки\WPF\Фишки\9780672331190_SourceCode\10\Listing 10.2 DataGrid with Inline Data\DataGrid\bin\Debug\DataGrid.pdb
+C:\Users\Виктор\Desktop\c#\Biblija_C_CD_Bookforall.ru\Уроки\WPF\Фишки\9780672331190_SourceCode\10\Listing 10.2 DataGrid with Inline Data\DataGrid\obj\x86\Debug\DataGrid.csprojResolveAssemblyReference.cache
+C:\Users\Виктор\Desktop\c#\Biblija_C_CD_Bookforall.ru\Уроки\WPF\Фишки\9780672331190_SourceCode\10\Listing 10.2 DataGrid with Inline Data\DataGrid\obj\x86\Debug\MainWindow.g.cs
+C:\Users\Виктор\Desktop\c#\Biblija_C_CD_Bookforall.ru\Уроки\WPF\Фишки\9780672331190_SourceCode\10\Listing 10.2 DataGrid with Inline Data\DataGrid\obj\x86\Debug\App.g.cs
+C:\Users\Виктор\Desktop\c#\Biblija_C_CD_Bookforall.ru\Уроки\WPF\Фишки\9780672331190_SourceCode\10\Listing 10.2 DataGrid with Inline Data\DataGrid\obj\x86\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Виктор\Desktop\c#\Biblija_C_CD_Bookforall.ru\Уроки\WPF\Фишки\9780672331190_SourceCode\10\Listing 10.2 DataGrid with Inline Data\DataGrid\obj\x86\Debug\DataGrid_MarkupCompile.cache
+C:\Users\Виктор\Desktop\c#\Biblija_C_CD_Bookforall.ru\Уроки\WPF\Фишки\9780672331190_SourceCode\10\Listing 10.2 DataGrid with Inline Data\DataGrid\obj\x86\Debug\DataGrid_MarkupCompile.lref
+C:\Users\Виктор\Desktop\c#\Biblija_C_CD_Bookforall.ru\Уроки\WPF\Фишки\9780672331190_SourceCode\10\Listing 10.2 DataGrid with Inline Data\DataGrid\obj\x86\Debug\MainWindow.baml
+C:\Users\Виктор\Desktop\c#\Biblija_C_CD_Bookforall.ru\Уроки\WPF\Фишки\9780672331190_SourceCode\10\Listing 10.2 DataGrid with Inline Data\DataGrid\obj\x86\Debug\DataGrid.g.resources
+C:\Users\Виктор\Desktop\c#\Biblija_C_CD_Bookforall.ru\Уроки\WPF\Фишки\9780672331190_SourceCode\10\Listing 10.2 DataGrid with Inline Data\DataGrid\obj\x86\Debug\DataGrid.Properties.Resources.resources
+C:\Users\Виктор\Desktop\c#\Biblija_C_CD_Bookforall.ru\Уроки\WPF\Фишки\9780672331190_SourceCode\10\Listing 10.2 DataGrid with Inline Data\DataGrid\obj\x86\Debug\DataGrid.csproj.GenerateResource.Cache
+C:\Users\Виктор\Desktop\c#\Biblija_C_CD_Bookforall.ru\Уроки\WPF\Фишки\9780672331190_SourceCode\10\Listing 10.2 DataGrid with Inline Data\DataGrid\obj\x86\Debug\DataGrid.exe
+C:\Users\Виктор\Desktop\c#\Biblija_C_CD_Bookforall.ru\Уроки\WPF\Фишки\9780672331190_SourceCode\10\Listing 10.2 DataGrid with Inline Data\DataGrid\obj\x86\Debug\DataGrid.pdb

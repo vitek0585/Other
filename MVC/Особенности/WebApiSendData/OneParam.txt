@@ -1,0 +1,12 @@
+this.requestOneDataApi = function (url, item, headers) {
+        var form = '=' + item;
+        
+        var config = {
+            url: url,
+            method: "POST",
+            headers: headers || { 'Content-Type': 'application/x-www-form-urlencoded' },
+            data: form
+        };
+        var promise = http(config);
+        return promise;
+    }

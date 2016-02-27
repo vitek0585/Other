@@ -1,0 +1,115 @@
+Другими словами, компилятор C# преобразует конструкции языка C# в коман-
+ды промежуточного языка (Intermediate Language, IL), которые, в свою очередь,
+JIT-компилятор превращает в машинные директивы, обрабатываемые уже непо-
+средственно процессором. При этом компилятор C#, JIT-компилятор и даже сам
+процессор могут оптимизировать ваш код.
+
+деревья - специальна структура данных организованная по определенному принципу
+
+Interlocked.Increment(ref counter); - Поток увеличивает счетчик. (counter++;)
+Interlocked.Decrement(ref counter); - Поток уменьшает счетчик.(counter--;) 
+long number = Interlocked.Read(ref counter); - считывание поля counter
+
+int result = Interlocked.CompareExchange(ref block, 1, 0); - Метод CompareExchange() 
+1. Сравнивает начальное значение первого аргумента с третьим аргументом.
+2. Если первый аргумент равен третьему аргументу, то в первый аргумент записывается значение второго аргумента.
+3. Иначе, если первый аргумент не равен третьему аргументу, то первый аргумент остается без изменения.
+4. Возвращает начальное значение первого аргумента (в любом случае).
+Interlocked.Exchange(ref block, 0); - записывает значение второго аргумента
+
+Monitor
+Monitor.Enter(block); - Начало блокировки.
+Monitor.Exit(block); - Конец блокировки.
+Monitor.Wait(block, Timeout.Infinite); - запускается в блоке lock (block) или после Monitor.Enter(block);
+Monitor.Pulse(block); 
+
+Mutex mut
+mut.WaitOne();
+mut.ReleaseMutex();
+
+RegisteredWaitHandle wh = 
+ThreadPool.RegisterWaitForSingleObject(eh, (state, @out) =>mn.Set(),null,Timeout.Infinite, false);
+wh.Unregister(eh);
+
+WaitHandle
+WaitHandle.WaitAll(ManualResetEvent[]);
+WaitHandle.WaitAny(ManualResetEvent[]); 
+
+ThreadPool.QueueUserWorkItem(CallBack);
+
+static AutoResetEvent; ManualResetEvent - Reset()
+auto.WaitOne();
+auto.Set(); 
+
+static EventWaitHandle eh = new EventWaitHandle(false, EventResetMode.ManualReset, "myEH");
+eh.Set();
+eh.Reset();
+
+Semaphore 
+pool.WaitOne(); - занял слот семафора
+pool.Release(); - освободил слот
+
+SemaphoreSlim Wait(); .Release()
+
+IAsyncResult asyncResult = myDelegate.BeginInvoke
+asyncResult.AsyncWaitHandle.WaitOne(); - AsyncWaitHandle типа WaitHandle, переходит в сигнальное состояние при завершении асинхронной операции.
+AsyncResult.AsyncDelegate - get value
+
+var task = new Task(action); - ХОЛОДНАЯ ЗАДАЧА Создание экземпляра задачи. Передаем ссылку на экземпляр класса делегат
+task.Start(); 
+
+task1.Wait(); - Метод Main() остается активным до завершения задачи MyTask(). 
+
+Статические методы .WaitAll и .WaitAny возвращают управление потоков
+Task.WaitAll(task1, task2); - дождаться завершения указанных задач
+Task.WaitAny(task1, task2); - дождаться завершение какой либо задачи (вернет какая из задач (по номеру передачи аргумента)) была завершена )
+Task task = Task.Factory.StartNew(MyTask)
+Task taskContinuation = task.ContinueWith(ContinuationTask); 
+TaskCreationOptions - при каких случаях вызывается обратный вызов
+.Result 
+
+CancellationTokenSource
+cancelTok.ThrowIfCancellationRequested(); - Проверить, отменена ли задача, 
+.IsCancellationRequested Свойство структуры CancellationToken  возвращает true если кто либо запросил завершение задачи
+
+ParallelLoopResult loopResult = Parallel.For(0, data.Length, MyTransform);
+Parallel.Invoke( Method1, Method2,Method1,Method2); - запустятся все 4 метода
+Отмена параллельного цикла
+ParallelLoopState - Позволяет итерациям циклов Parallel взаимодействовать с другими итерациями.
+
+IsolatedStorageFile.GetMachineStoreForAssembly();- создается изолированное файловое хранилище на уровне локальной машины
+IsolatedStorageFile.GetUserStoreForAssembly(); 
+
+IsolatedStorageFileStream userStream = new IsolatedStorageFileStream("UserSettings.set", FileMode.Create, userStorage);
+
+RegistryKey myKey = Registry.LocalMachine;
+RegistryKey software = myKey.OpenSubKey("Software"); - открытием ключа
+RegistryKey microsoft = software.OpenSubKey("Microsoft"); - открытием ключа
+microsoft.Close(); 
+RegistryKey newKey = wKey.CreateSubKey("C s");
+wKey.DeleteSubKey("C s"); - удаление ключа, по имени
+newKey.SetValue("TheStringName", "I contain string value."); - 1 имя ключа который будет добавлен в раздел и 2й параметр значение
+
+assembly = Assembly.Load("CarLibrary"); - при помощи метода .Load() 
+Type type = assembly.GetType("CarLibrary.MiniVan"); - Метод для получения информации о членах класса
+
+AppDomain secondDomain = AppDomain.CreateDomain("Second Domain");
+ObjectHandle userHandle = secondDomain.CreateInstance("Domains", "Domains.UserProcessor");
+var userProxy = (UserProcessor)userHandle.Unwrap();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
