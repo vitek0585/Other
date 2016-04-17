@@ -1,3 +1,4 @@
 cd
 apt-get update
 apt-get install docker.io
+service docker.io status

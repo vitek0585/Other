@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <style>
+        .table-row {
+            width: 100%;
+            display: table;
+        }
+         .red {
+             background: red;
+             height: 50px;
+         }
+        .blue {
+            background: skyblue;
+            height: 100%;
+        }
+        .yellow {
+            background: yellow;
+        }
+        /*.blue:after {
+            display: table;
+            content: ' ';
+            height: 100%
+        }*/
+        .margin-top {
+            margin-top: 50px;
+        }
+        .no-float {
+            float: none;
+            display: table-cell;
+            vertical-align: middle;
+        }
+    </style>
+    <script src="Scripts/jquery-1.9.1.js"></script>
+    <script src="Scripts/bootstrap.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row margin-top table-row">
+            <div class="col-md-4 red no-float">Hello</div>
+            <p class="col-md-4 blue no-float">World</p>
+            <p class="col-md-4 yellow no-float">World</p>
+        </div>
+    </div>
+</body>
+</html>

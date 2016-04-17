@@ -1,0 +1,1 @@
+copy $(TargetPath) $(SolutionDir)\Demo017\bin\debug

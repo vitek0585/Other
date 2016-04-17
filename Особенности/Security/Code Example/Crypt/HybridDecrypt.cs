@@ -24,7 +24,8 @@ namespace Crypt.Crypt
         {
             RSACryptoServiceProvider rsa = new RSACryptoServiceProvider(2048){PersistKeyInCsp = false};
             rsa.ImportParameters(privKey);
-            var isDataValid = CompareHashData(request,rsa);
+
+            var isDataValid = CompareHashData(request, rsa);//проверяет хеш данных
             if (!isDataValid)
             {
                 throw new CryptographicException("Data is not match");
@@ -69,13 +70,17 @@ namespace Crypt.Crypt
                 return signDfmtr.VerifySignature(request.HashData, request.Signature);
             }
         }
+        //проверяет что хеш данных один и тот же 
         private bool CompareHashData(HttpRequest request, RSACryptoServiceProvider rsa)
         {
+            //расшифровываем SessionKey (раннее request.SessionKey = _rsa.Encrypt(request.SessionKey, false);)
             request.SessionKey = rsa.Decrypt(request.SessionKey, false);
-
+            //request.SessionKey это ключ для симитричного шифрования
             using (var hmac = new HMACSHA256(request.SessionKey))
             {
+                //получаем DataCrypt (раннее hash256.ComputeHash(request.DataCrypt);) 
                 var dataHash = hmac.ComputeHash(request.DataCrypt);
+                //проверяем хеш данных то что он один и тот же
                 return ComparerHashData(dataHash, request.HashData);
             }
 
