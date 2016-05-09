@@ -1,0 +1,14 @@
+.anim-show {
+    animation-name: create;
+    animation-duration: 1s;
+}
+
+@keyframes create {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}

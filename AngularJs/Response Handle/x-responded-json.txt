@@ -1,0 +1,38 @@
+(function () {
+    'use strict';
+
+    var global = angular.module('globalApp', ['spinnerDir']);
+    global.injectRequires = function (arr) {
+        Array.prototype.push.apply(this.requires, arr);
+    }
+    var handlerNoAuthResponse = function (xheader) {
+        if (xheader != null) {
+            var obj = JSON.parse(xheader);
+            var location = obj.headers.location;
+            var index = location.indexOf('?');
+            var currentLocation = location.substring(0, index);
+            document.location = currentLocation;
+        }
+    }
+
+    //ajax
+    $(document).ajaxComplete(function (event, xhr, settings) {
+        var xheader = xhr.getResponseHeader('x-responded-json');
+        handlerNoAuthResponse(xheader);
+    });
+
+    //angular
+    global.config(function ($httpProvider) {
+        $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
+        $httpProvider.interceptors.push(function () {
+            return {
+                response: function (response) {
+                    var xheader = response.headers('x-responded-json');
+                    handlerNoAuthResponse(xheader);
+                    return response;
+                }
+            }
+        });
+    });
+
+})();

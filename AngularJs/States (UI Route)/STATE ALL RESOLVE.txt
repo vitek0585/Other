@@ -1,0 +1,137 @@
+
+<style>
+    .anim {
+        animation-name: create;
+        animation-duration: 1s;
+    }
+
+    @@keyframes create {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+</style>
+
+<div ng-app="app">
+    <div style="margin-top: 100px">
+        <a ui-sref="home">Home</a>
+        <a ui-sref="about">About</a>
+        <a ui-sref="contact">Contact</a>
+        <a ui-sref="view1">View</a>
+        <a ui-sref="child">Child</a>
+    </div>
+    <div ui-view></div>
+    <div>State</div>
+    <div ui-view="view" class="anim">1</div>
+
+
+    <script type="text/ng-template" id="home.html">
+        <div>HOME</div>
+    </script>
+    <script type="text/ng-template" id="about.html">
+        <div>About</div>
+    </script>
+    <script type="text/ng-template" id="contact.html">
+        <div>Contact</div>
+    </script>
+    <script type="text/ng-template" id="view.html">
+        
+                <div>View {{vc.title}}</div>
+        <div ng-repeat="item in vc.data">
+            VC - {{item}}
+        </div>
+        <div ui-view></div>
+    
+    
+    </script>
+</div>
+
+@section scripts{
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/angular-ui-router.js"></script>
+    @*<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>*@
+    <script type="text/javascript">
+        var app = angular.module("app", ['ui.router']);
+        app.config(setupRoute);
+        app.controller('viewCtrl', viewCtrl); 
+        app.controller('simpleCtrl', simpleCtrl);
+        viewCtrl.$inject = ['data'];
+        setupRoute.$inject = ['$stateProvider'];
+
+        function setupRoute(provider) {
+            provider.state('home',
+                {
+                    templateUrl: 'home.html',
+                    url: '/home'
+                })
+                .state('about',
+                {
+                    templateUrl: 'about.html',
+                    url: '/about'
+                })
+                .state('contact',
+                {
+                    templateUrl: 'contact.html',
+                    url: '/contact'
+                })
+                .state('view1',
+                {
+                    url: '/view',
+                    //controller: 'simpleCtrl',
+                    //controllerAs: 'vc',
+                    //template: '<div>Base {{vc.title}}</div>',
+                    views: {
+                        '': {
+                            template: '<div>Base {{vc.title}}</div>',
+                            controller: 'simpleCtrl',
+                            controllerAs: 'vc',
+                        },
+
+                        'view': {
+                            templateUrl: 'view.html',
+                            controller: 'viewCtrl',
+                            controllerAs: 'vc',
+                            resolve: {
+                                data: function (dataFactory) {
+                                    return dataFactory;
+                                }
+                            }
+                        }
+                    }
+                }).
+                state('child',
+                {
+                    parent:'view1',
+                    url: '/child',
+                    controller: 'simpleCtrl',
+                    controllerAs: 'vc',
+                    template: '<div>Child {{vc.title}}</div>'
+                    
+                });
+        }
+
+        function viewCtrl(data) {
+            var vm = this;
+            vm.data = data;
+            vm.title = '!!!';
+        }
+        function simpleCtrl() {
+            var vm = this;
+            vm.title = '!!!';
+        }
+        app.factory('dataFactory', dataSer);
+
+        function dataSer($timeout, $q) {
+            var deferred = $q.defer();
+            $timeout(function () {
+                deferred.resolve([1, 2, 3, 4, 5]);
+            }, 2000, true);
+            return deferred.promise;
+        }
+    </script>
+
+}
