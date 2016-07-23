@@ -1,0 +1,10 @@
+Param(
+    [parameter(Mandatory=$true)]
+    [alias("f")]
+    $FilePath
+)
+$regexString = '(\d+) Warnings*';
+$summaryRecord= @(Get-Content -ErrorAction Stop $FilePath | Where {$_ -match $regexString})
+$warningCount= [regex]::Match($summaryRecord, $regexString).captures.groups[1].value
+
+Write-Host "##teamcity[buildStatus text='{build.status.text}, Build warnings: $warningCount']"

@@ -1,0 +1,21 @@
+Path pattern: "**/ScoringEngineService/SharedAssemblyInfo.cs"
+File encoding: <Auto-detect>
+Search for: (^\s*\[\s*assembly\s*:\s*((System\s*\.)?\s*Reflection\s*\.)?\s*AssemblyFileVersion(Attribute)?\s*\(\s*@?\")(([0-9\*])+\.?)+(\"\s*\)\s*\])
+Match case: true
+Replace with: $1\%build.number%$7
+View	
+More 
+File Content Replacer  (inherited)
+Path pattern: "**/ScoringEngineService/SharedAssemblyInfo.cs"
+File encoding: <Auto-detect>
+Search for: (^\s*\[\s*assembly\s*:\s*((System\s*\.)?\s*Reflection\s*\.)?\s*AssemblyInformationalVersion(Attribute)?\s*\(\s*@?\")([^\"]*)(\"\s*\)\s*\])
+Match case: true
+Replace with: $1\%build.number%$6
+View	
+More 
+File Content Replacer  (inherited)
+Path pattern: "**/ScoringEngineService/SharedAssemblyInfo.cs"
+File encoding: <Auto-detect>
+Search for: (^\s*\[\s*assembly\s*:\s*((System\s*\.)?\s*Reflection\s*\.)?\s*AssemblyVersion(Attribute)?\s*\(\s*@?\")(([0-9\*])+\.?)+(\"\s*\)\s*\])
+Match case: true
+Replace with: $1\%build.number%$7

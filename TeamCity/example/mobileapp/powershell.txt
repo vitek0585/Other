@@ -1,0 +1,30 @@
+ParaM(
+    [string] $msBuildFilePath,
+    [string] $javaJdkBinFilePath,
+    [string] $androidSdkBuildToolsFilePath,
+    [string] $solutionFolderFilePath,
+    [string] $keyStoreFilePath,
+    [string] $keyStorePasswd
+)
+
+$currentDirectory = Split-Path $PSCommandPath
+
+$androidMobileAppFilePath = Join-Path $solutionFolderFilePath "\Mobile\CredoLab.Android\"
+$androidAppFilePath = Join-Path $androidMobileAppFilePath "CredoLab.Android.csproj"
+
+cd $msBuildFilePath
+.\MSBuild.exe $androidAppFilePath /p:Configuration=Release /p:Platform=AnyCPU /t:Clean
+.\MSBuild.exe $androidAppFilePath /p:Configuration=Release /p:Platform=AnyCPU /t:PackageForAndroid
+
+$apkFilePath = Join-Path $androidMobileAppFilePath "\bin\Release\credolab.mobile.apk"
+$signedApkFilePath = Join-Path $androidMobileAppFilePath "bin\Release\credolab.mobile-Signed.apk"
+
+cd $javaJdkBinFilePath
+.\jarsigner.exe -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore $keyStoreFilePath -signedjar $signedApkFilePath $apkFilePath com -storepass $keyStorePasswd
+
+$finalApkFilePath = Join-Path $androidMobileAppFilePath "credolab.mobile-Signed.apk"
+
+cd $androidSdkBuildToolsFilePath
+.\zipalign.exe -f -v 4 $signedApkFilePath $finalApkFilePath
+
+cd $currentDirectory
