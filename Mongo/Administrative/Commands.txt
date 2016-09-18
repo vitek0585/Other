@@ -1,0 +1,7 @@
+mongorestore --db Test --gzip --dir d:\backup\Test
+
+mongodump --db Test --gzip --out d:\backup
+
+Group ID: 57de50a0c0c6e34d97352fa1
+
+API Key: 264e3c7e7d2aad94cd441e5479088f3a
