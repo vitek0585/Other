@@ -1,0 +1,6 @@
+n - element count
+x - steps
+log2n=x	
+log16=4
+log64=4 2(6)=64
+log256=8 2(8)=256 

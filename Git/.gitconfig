@@ -1,0 +1,39 @@
+
+[core]
+	editor = 'C:\\Program Files (x86)\\Notepad++\\notepad++.exe' -multiInst -notabbar -nosession -noPlugin
+	autocrlf = true
+[credential]
+	helper = !\\\"C:/Program Files (x86)/GitExtensions/GitCredentialWinStore/git-credential-winstore.exe\\\"
+[user]
+	name = vitek
+	email = vitek0585@mail.ru
+	
+	 tool = vsdiffmerge
+[difftool]
+      prompt = true
+[difftool "vsdiffmerge"]
+	cmd = \"D:\\Program files\\Visual Studio 14\\Common7\\IDE\\vsdiffmerge.exe\" \"$LOCAL\" \"$REMOTE\" //t
+      keepbackup = false
+      trustexistcode = true
+[merge]
+      tool = vsdiffmerge
+[mergetool]
+      prompt = true
+[mergetool "vsdiffmerge"]
+      cmd = "D:/Program files/Visual Studio 14/Common7/IDE/vsdiffmerge.exe" "$REMOTE" "$LOCAL" "$BASE" "$MERGED" //m
+      keepbackup = false
+      trustexistcode = true
+
+[alias]
+	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+[mergetool]
+	keepBackup = false
+[gui]
+
+[difftool "sourcetree"]
+	cmd = 'C:/Program Files/KDiff3/kdiff3.exe' \"$LOCAL\" \"$REMOTE\"
+[mergetool "sourcetree"]
+	cmd = 'C:/Program Files/KDiff3/kdiff3.exe' \"$BASE\" \"$LOCAL\" \"$REMOTE\" -o \"$MERGED\"
+	trustExitCode = true
+[diff]
+	tool = vsdiffmerge
