@@ -1,0 +1,19 @@
+255|shell@w7:/ $ run-as com.daulet
+shell@w7:/data/data/com.daulet $ cd shared_prefs
+shell@w7:/data/data/com.daulet/shared_prefs $ ls
+AUTH_KEY.xml
+WORKING_TIME_KEY.xml
+shell@w7:/data/data/com.daulet/shared_prefs $ cat WORKING_TIME_KEY.xml
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<map>
+    <int name="START_MINUTES" value="58" />
+    <int name="START_HOUR" value="16" />
+    <int name="END_MINUTES" value="4" />
+    <int name="END_HOUR" value="17" />
+</map>
+at AUTH_KEY.xml                                                               <
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<map>
+    <boolean name="AUTH" value="true" />
+</map>
+shell@w7:/data/data/com.daulet/shared_prefs $

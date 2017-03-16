@@ -1,0 +1,14 @@
+ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+NetworkInfo netInfo = cm.getActiveNetworkInfo();
+if (netInfo.getTypeName().equalsIgnoreCase("WIFI")) {
+// Wifi connectivity
+}
+if (netInfo.getTypeName().equalsIgnoreCase("MOBILE")) {
+// Mobile data connectivity
+}
+if (netInfo.isAvailable()) {
+// Network is available
+}
+if (netInfo.isConnected()) {
+// Network is connected
+}

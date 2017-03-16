@@ -1,0 +1,108 @@
+import android.content.Context;
+import android.content.SharedPreferences;
+
+import junit.framework.TestCase;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.internal.util.reflection.Whitebox;
+import org.mockito.runners.MockitoJUnitRunner;
+
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
+import services.DataCollectionService;
+import utils.DataCollectionScheduler;
+import utils.InternalStorage;
+
+import static org.mockito.Mockito.when;
+
+
+@RunWith(MockitoJUnitRunner.class)
+public class ServiceTrackingTest extends TestCase {
+
+    @Mock
+    private SharedPreferences sharedPrefs;
+    @Mock
+    private Context context;
+    @Mock
+    private InternalStorage internalStorage;
+    @Mock
+    DataCollectionScheduler dataCollectionScheduler;
+
+    @Before
+    public void before() throws Exception {
+//        this.sharedPrefs = Mockito.mock(SharedPreferences.class);
+//        this.context = Mockito.mock(Context.class);
+//        when(context.getSharedPreferences(InternalStorage.WORKING_TIME_KEY, Context.MODE_PRIVATE)).thenReturn(sharedPrefs);
+//        when(sharedPrefs.getInt(InternalStorage.START_HOUR, -1)).thenReturn(8);
+    }
+
+    @Test
+    public void isWorkingTime() {
+        when(internalStorage.getStartWorkingHour()).thenReturn(8);
+        when(internalStorage.getStartWorkingMinutes()).thenReturn(38);
+        when(internalStorage.getEndWorkingHour()).thenReturn(10);
+        when(internalStorage.getEndWorkingMinutes()).thenReturn(0);
+
+        DataCollectionService dataCollectionService = new DataCollectionService();
+        Whitebox.setInternalState(dataCollectionService, "_internalStorage", internalStorage);
+        assertEquals(true, dataCollectionService.isWorkingTime(1486277400000L));// 2/5/2017, 8:50:00 AM
+        assertEquals(true, dataCollectionService.isWorkingTime(1486191000000L));//2/4/2017, 8:50:00 AM
+        assertEquals(true, dataCollectionService.isWorkingTime(1483512600000L));// 1/4/2017, 8:50:00 AM
+        assertEquals(false, dataCollectionService.isWorkingTime(1483555800000L));// 1/4/2017, 20:50:00 PM
+        assertEquals(false, dataCollectionService.isWorkingTime(1483516800000L));// 1/4/2017, 10:00:00 AM
+        assertEquals(true, dataCollectionService.isWorkingTime(1483516740000L));// 1/4/2017, 9:59:00 AM
+        assertEquals(true, dataCollectionService.isWorkingTime(1493876280000L));// Thu May 04 2017 08:38:00
+        assertEquals(false, dataCollectionService.isWorkingTime(1493876279999L));// Thu May 04 2017 08:37:59.999
+    }
+
+    @Test
+    public void getAlarmTime() {
+        DataCollectionScheduler dataCollectionScheduler = new DataCollectionScheduler(null, null);
+        DataCollectionScheduler dataCollectionSchedulerSpy = Mockito.spy(dataCollectionScheduler);
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(new java.util.Date(1493876330000L));//Thu May 04 2017 08:38:50
+
+        Calendar calendar1 = Calendar.getInstance();
+        calendar1.setTime(new java.util.Date(1493876330000L - 1000 * 60));//Thu May 04 2017 08:37:50
+
+        Calendar calendar2 = Calendar.getInstance();
+        calendar2.setTime(new java.util.Date(1493876330000L + 1000 * 60));//Thu May 04 2017 08:39:50
+
+        Calendar calendar3 = Calendar.getInstance();
+        calendar3.setTime(new java.util.Date(1493876330000L - 1000 * 50));//Thu May 04 2017 08:38:00
+
+        Calendar calendar4 = Calendar.getInstance();
+        calendar4.setTime(new java.util.Date(1493876330000L + 1000));//Thu May 04 2017 08:38:01
+
+        when(dataCollectionSchedulerSpy.getCurrentTime()).thenReturn(
+                (Calendar) calendar.clone(), (Calendar) calendar.clone(),
+                (Calendar) calendar1.clone(), (Calendar) calendar1.clone(),
+                (Calendar) calendar2.clone(), (Calendar) calendar2.clone(),
+                (Calendar) calendar3.clone(), (Calendar) calendar3.clone(),
+                (Calendar) calendar4.clone(), (Calendar) calendar4.clone());
+
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+
+        long alarmTime = dataCollectionSchedulerSpy.getAlarmTime(8, 38);
+        assertEquals("05/05/2017 08:38:00", simpleDateFormat.format(new Date(alarmTime)));
+
+        alarmTime = dataCollectionSchedulerSpy.getAlarmTime(8, 38);
+        assertEquals("05/04/2017 08:38:00", simpleDateFormat.format(new Date(alarmTime)));
+
+        alarmTime = dataCollectionSchedulerSpy.getAlarmTime(8, 38);
+        assertEquals("05/05/2017 08:38:00", simpleDateFormat.format(new Date(alarmTime)));
+
+        alarmTime = dataCollectionSchedulerSpy.getAlarmTime(8, 38);
+        assertEquals("05/05/2017 08:38:00", simpleDateFormat.format(new Date(alarmTime)));
+
+        alarmTime = dataCollectionSchedulerSpy.getAlarmTime(8, 38);
+        assertEquals("05/05/2017 08:38:00", simpleDateFormat.format(new Date(alarmTime)));
+    }
+}

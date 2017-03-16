@@ -1,0 +1,30 @@
+BroadcastReceiver wifiStatusReceiver = new BroadcastReceiver() {
+@Override
+public void onReceive(Context context, Intent intent) {);
+SupplicantState supState;
+WifiManager wifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
+WifiInfo wifiInfo = wifiManager.getConnectionInfo();
+supState = wifiInfo.getSupplicantState();
+if (supState.equals(SupplicantState.COMPLETED)) {
+// wifi is connected
+} else if (supState.equals(SupplicantState.SCANNING)) {
+// no wifi is available, but scanning is in progress
+} else if (supState.equals(SupplicantState.DISCONNECTED)) {
+// wifi not connected
+}
+}
+};
+Each time we implement a BroadcastReceiver, we need to register it in the
+onResume method of our app, and unregister it in the onPause method,
+as shown below:
+@Override
+protected void onResume() {
+super.onResume();
+IntentFilter filter = new IntentFilter(WifiManager.SUPPLICANT_STATE_CHANGED_ACTION);
+this.registerReceiver(wifiStatusReceiver, filter);
+}
+@Override
+public void onPause() {
+this.unregisterReceiver(wifiStatusReceiver);
+super.onPause();
+}

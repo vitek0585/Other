@@ -1,0 +1,6 @@
+adb shell
+su
+chmod 777 /data/data/com.activitytracker/databases/ActivityDataBest
+exit
+exit
+adb pull /data/data/com.activitytracker/databases/ActivityDataBest C:/Test

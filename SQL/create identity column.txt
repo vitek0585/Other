@@ -1,0 +1,5 @@
+ALTER TABLE DaysOfWeek DROP CONSTRAINT pk_DaysOfWeek
+ALTER TABLE dbo.DaysOfWeek
+   add id INT NOT NULL identity(1,1)
+ALTER TABLE DaysOfWeek DROP Column id
+   ALTER TABLE DaysOfWeek ADD Constraint pk_DaysOfWeek Primary key (id) 

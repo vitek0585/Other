@@ -1,0 +1,73 @@
+public class MyActivity extends Activity {
+
+    private Handler mUiHandler = new Handler();
+    private MyWorkerThread mWorkerThread;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.main);
+
+        mWorkerThread = new MyWorkerThread("myWorkerThread");
+        Runnable task = new Runnable() {
+            @Override
+            public void run() {
+                for (int i = 0; i < 4; i++) {
+                    try {
+                        TimeUnit.SECONDS.sleep(2);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    if (i == 2) {
+                        mUiHandler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(MyActivity.this,
+                                        "I am at the middle of background task",
+                                        Toast.LENGTH_LONG)
+                                        .show();
+                            }
+                        });
+                    }
+                }
+                mUiHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(MyActivity.this,
+                                "Background task is completed",
+                                Toast.LENGTH_LONG)
+                                .show();
+                    }
+                });
+            }
+        };
+        mWorkerThread.start();
+        mWorkerThread.prepareHandler();
+        mWorkerThread.postTask(task);
+        mWorkerThread.postTask(task);
+    }
+
+    @Override
+    protected void onDestroy() {
+        mWorkerThread.quit();
+        super.onDestroy();
+    }
+}
+
+
+public class MyWorkerThread extends HandlerThread {
+
+    private Handler mWorkerHandler;
+
+    public MyWorkerThread(String name) {
+        super(name);
+    }
+
+    public void postTask(Runnable task){
+        mWorkerHandler.post(task);
+    }
+
+    public void prepareHandler(){
+        mWorkerHandler = new Handler(getLooper());
+    }
+}
